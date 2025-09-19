@@ -27,7 +27,10 @@ Arduino_GFX *gfx = new Arduino_ST7789(
  * End of lvgl setting
  ******************************************************************************/
 
-#define BACKGROUND RGB565_BLACK
+
+//#define BACKGROUND RGB565_BLACK
+#define BACKGROUND RGB565_BLUE
+/*
 #define MARK_COLOR RGB565_WHITE
 #define SUBMARK_COLOR RGB565_DARKGREY // RGB565_LIGHTGREY
 #define HOUR_COLOR RGB565_WHITE
@@ -58,7 +61,7 @@ static unsigned long targetTime; // next action time
 static int16_t *cached_points;
 static uint16_t cached_points_idx = 0;
 static int16_t *last_cached_point;
-
+*/
 void setup(void)
 {
 #ifdef DEV_DEVICE_INIT
@@ -68,7 +71,7 @@ void setup(void)
   Serial.begin(115200);
   // Serial.setDebugOutput(true);
   while(!Serial);
-  Serial.println("Arduino_GFX Clock example");
+  Serial.println("WS Pico 2350 Touchscreen Template");
 
   // Init Display
   if (!gfx->begin())
@@ -81,7 +84,7 @@ void setup(void)
   pinMode(GFX_BL, OUTPUT);
   digitalWrite(GFX_BL, HIGH);
 #endif
-
+/*
   // init LCD constant
   w = gfx->width();
   h = gfx->height();
@@ -111,10 +114,12 @@ void setup(void)
   ss = conv2d(__TIME__ + 6);
 
   targetTime = ((millis() / 1000) + 1) * 1000;
+*/  
 }
 
 void loop()
 {
+/*
   unsigned long cur_millis = millis();
   if (cur_millis >= targetTime)
   {
@@ -161,10 +166,11 @@ void loop()
     osx = nsx;
     osy = nsy;
 
-    delay(1);
+    delay(1);  
   }
+*/  
 }
-
+/*
 void draw_round_clock_mark(int16_t innerR1, int16_t outerR1, int16_t innerR2, int16_t outerR2, int16_t innerR3, int16_t outerR3)
 {
   float x, y;
@@ -377,3 +383,4 @@ void write_cache_pixel(int16_t x, int16_t y, int16_t color, bool cross_check_sec
   }
   gfx->writePixel(x, y, color);
 }
+*/

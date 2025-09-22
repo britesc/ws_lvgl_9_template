@@ -45,8 +45,8 @@ uint32_t bufSize;
 lv_display_t *disp;
 lv_color_t *disp_draw_buf1;
 lv_color_t *disp_draw_buf2;
-#define BACKGROUND RGB565_OLIVE
-#define VERSION    "0.0.15"
+#define BACKGROUND RGB565_RED
+#define VERSION    "0.0.16"
 /*******************************************************************************
  * End of sketch settings
  ******************************************************************************/
@@ -69,14 +69,13 @@ void setup(void)
 
   init_wire();
 
+  init_system();
 }
 
 void loop()
 {
  
 }
-
-
 
 void init_serial()
 {
@@ -106,6 +105,11 @@ void init_display()
     Serial.println("gfx->begin() failed!");
   }
   gfx->fillScreen(BACKGROUND); 
+
+#ifdef GFX_BL
+  pinMode(GFX_BL, OUTPUT);
+  digitalWrite(GFX_BL, HIGH);
+#endif  
 }
 
 void init_wire()
@@ -115,6 +119,21 @@ void init_wire()
   Wire1.begin();
   Wire1.setClock(I2C_SPEED);
 }  
+
+void init_system()
+{
+  screenWidth = gfx->width();
+  screenHeight = gfx->height();
+  screenRotation = gfx->getRotation();
+  static bsp_cst328_info_t cst328_info;
+  cst328_info.width = screenWidth;
+  cst328_info.height = screenHeight;
+  cst328_info.rotation = screenRotation;
+  cst328_info.Wire = &Wire1;
+  cst328_info.rst_pin = TP_RST_PIN;
+  cst328_info.int_pin = TP_INT_PIN;
+  bsp_cst328_init(&cst328_info); 
+}
 
 #if LV_USE_LOG != 0
 void my_print(lv_log_level_t level, const char *buf)

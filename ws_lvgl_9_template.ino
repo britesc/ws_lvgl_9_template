@@ -45,8 +45,8 @@ uint32_t bufSize;
 lv_display_t *disp;
 lv_color_t *disp_draw_buf1;
 lv_color_t *disp_draw_buf2;
-#define BACKGROUND RGB565_PINK
-#define VERSION    "0.0.11"
+#define BACKGROUND RGB565_OLIVE
+#define VERSION    "0.0.15"
 /*******************************************************************************
  * End of sketch settings
  ******************************************************************************/
@@ -83,8 +83,20 @@ void init_serial()
   Serial.begin(115200);
   // Serial.setDebugOutput(true);
   while(!Serial);
+  output_info();
+}
+
+void output_info()
+{
   Serial.println("WS Pico 2350 Touchscreen Template");
-  Serial.println(VERSION); 
+  String String_Out = String("  Version ") + VERSION;
+  Serial.println(String_Out); 
+  String_Out = String("  GNU C++ Version ") + __cplusplus;
+  Serial.println(String_Out);
+  String_Out = String("  Compiled ") + __DATE__ + " " + __TIME__;  
+  Serial.println(String_Out);
+  String_Out = String("  LVGL Version ") + lv_version_major() + "." + lv_version_minor() + "." + lv_version_patch();
+  Serial.println(String_Out); 
 }
 
 void init_display()

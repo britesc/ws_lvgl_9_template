@@ -45,8 +45,8 @@ uint32_t bufSize;
 lv_display_t *disp;
 lv_color_t *disp_draw_buf1;
 lv_color_t *disp_draw_buf2;
-#define BACKGROUND RGB565_RED
-#define VERSION    "0.0.16"
+#define BACKGROUND RGB565_ORANGE
+#define VERSION    "0.0.20"
 /*******************************************************************************
  * End of sketch settings
  ******************************************************************************/
@@ -70,11 +70,30 @@ void setup(void)
   init_wire();
 
   init_system();
+
+  lv_init();
+
+  /*Set a tick source so that LVGL will know how much time elapsed. */
+  lv_tick_set_cb(millis_cb);
+
+  /* register print function for debugging */
+#if LV_USE_LOG != 0
+  lv_log_register_print_cb(my_print);
+#endif  
+
+  init_buffer();
+
+  init_touch();
+
+  disp_test();
+  
+  Serial.println("Setup done");  
 }
 
 void loop()
 {
- 
+  lv_task_handler(); /* let the GUI do its work */
+  delay(5); 
 }
 
 void init_serial()
@@ -135,6 +154,42 @@ void init_system()
   bsp_cst328_init(&cst328_info); 
 }
 
+void init_buffer()
+{
+#ifdef DIRECT_RENDER_MODE
+  bufSize = screenWidth * screenHeight;
+#else
+  bufSize = screenWidth * 120;
+#endif
+
+  Serial.println("LVGL disp_draw_buf heap_caps_malloc failed! malloc again...");
+  disp_draw_buf1 = (lv_color_t *)malloc(bufSize * 2);
+  disp_draw_buf2 = (lv_color_t *)malloc(bufSize * 2);
+
+  if (!disp_draw_buf1 && !disp_draw_buf2)
+  {
+    Serial.println("LVGL disp_draw_buf allocate failed!");
+  }
+  else
+  {
+    disp = lv_display_create(screenWidth, screenHeight);
+    lv_display_set_flush_cb(disp, my_disp_flush);
+#ifdef DIRECT_RENDER_MODE
+    lv_display_set_buffers(disp, disp_draw_buf1, disp_draw_buf2, bufSize * 2, LV_DISPLAY_RENDER_MODE_DIRECT);
+#else
+    lv_display_set_buffers(disp, disp_draw_buf1, disp_draw_buf2, bufSize * 2, LV_DISPLAY_RENDER_MODE_PARTIAL);
+#endif
+  }
+}
+
+void init_touch()
+{
+    /*Initialize the (dummy) input device driver*/
+    lv_indev_t *indev = lv_indev_create();
+    lv_indev_set_type(indev, LV_INDEV_TYPE_POINTER); /*Touchpad should have POINTER type*/
+    lv_indev_set_read_cb(indev, my_touchpad_read);
+}
+
 #if LV_USE_LOG != 0
 void my_print(lv_log_level_t level, const char *buf)
 {
@@ -182,3 +237,20 @@ void my_touchpad_read(lv_indev_t *indev, lv_indev_data_t *data)
 /* ------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------ */
+
+void disp_test() 
+{
+    lv_obj_t *label = lv_label_create(lv_scr_act());
+    lv_label_set_text(label, "Hello Julian, I'm LVGL! (V" GFX_STR(LVGL_VERSION_MAJOR) "." GFX_STR(LVGL_VERSION_MINOR) "." GFX_STR(LVGL_VERSION_PATCH) ")");
+    lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
+
+    lv_obj_t *label2 = lv_label_create(lv_scr_act());
+    lv_label_set_text(label2, "TEST CODE V1");
+    lv_obj_align(label2, LV_ALIGN_CENTER, 0, 15);
+
+    lv_obj_t *sw = lv_switch_create(lv_scr_act());
+    lv_obj_align(sw, LV_ALIGN_TOP_MID, 0, 40);
+
+    sw = lv_switch_create(lv_scr_act());
+    lv_obj_align(sw, LV_ALIGN_BOTTOM_MID, 0, -40);
+}  

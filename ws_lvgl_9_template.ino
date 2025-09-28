@@ -31,6 +31,7 @@ Arduino_GFX *gfx = new Arduino_ST7789(
  ******************************************************************************/
 #include <lvgl.h>
 #include <bsp_cst328.h>
+#include "src/disp_test.h"
 /*******************************************************************************
  * End of lvgl settings
  ******************************************************************************/
@@ -45,8 +46,8 @@ uint32_t bufSize;
 lv_display_t *disp;
 lv_color_t *disp_draw_buf1;
 lv_color_t *disp_draw_buf2;
-#define BACKGROUND RGB565_ORANGE
-#define VERSION    "0.0.20"
+#define BACKGROUND RGB565_BLUE
+#define VERSION    "0.0.32"
 /*******************************************************************************
  * End of sketch settings
  ******************************************************************************/
@@ -238,19 +239,19 @@ void my_touchpad_read(lv_indev_t *indev, lv_indev_data_t *data)
 /* ------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------ */
 
-void disp_test() 
-{
-    lv_obj_t *label = lv_label_create(lv_scr_act());
-    lv_label_set_text(label, "Hello Julian, I'm LVGL! (V" GFX_STR(LVGL_VERSION_MAJOR) "." GFX_STR(LVGL_VERSION_MINOR) "." GFX_STR(LVGL_VERSION_PATCH) ")");
-    lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
+// void disp_test() 
+// {
+//     lv_obj_t *label = lv_label_create(lv_scr_act());
+//     lv_label_set_text(label, "Hello Julian, I'm LVGL! (V" GFX_STR(LVGL_VERSION_MAJOR) "." GFX_STR(LVGL_VERSION_MINOR) "." GFX_STR(LVGL_VERSION_PATCH) ")");
+//     lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
 
-    lv_obj_t *label2 = lv_label_create(lv_scr_act());
-    lv_label_set_text(label2, "TEST CODE V1");
-    lv_obj_align(label2, LV_ALIGN_CENTER, 0, 15);
+//     lv_obj_t *label2 = lv_label_create(lv_scr_act());
+//     lv_label_set_text(label2, "TEST CODE V1");
+//     lv_obj_align(label2, LV_ALIGN_CENTER, 0, 15);
 
-    lv_obj_t *sw = lv_switch_create(lv_scr_act());
-    lv_obj_align(sw, LV_ALIGN_TOP_MID, 0, 40);
+//     lv_obj_t *sw = lv_switch_create(lv_scr_act());
+//     lv_obj_align(sw, LV_ALIGN_TOP_MID, 0, 40);
 
-    sw = lv_switch_create(lv_scr_act());
-    lv_obj_align(sw, LV_ALIGN_BOTTOM_MID, 0, -40);
-}  
+//     sw = lv_switch_create(lv_scr_act());
+//     lv_obj_align(sw, LV_ALIGN_BOTTOM_MID, 0, -40);
+// }  

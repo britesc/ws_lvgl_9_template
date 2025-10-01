@@ -31,7 +31,15 @@ Arduino_GFX *gfx = new Arduino_ST7789(
  ******************************************************************************/
 #include <lvgl.h>
 #include <bsp_cst328.h>
-#include "src/disp_test.h"
+//#include "src/disp_test.h"
+/*******************************************************************************
+ * End of lvgl settings
+ ******************************************************************************/
+
+/*******************************************************************************
+ * Start of ui settings
+ ******************************************************************************/
+#include <ui.h>
 /*******************************************************************************
  * End of lvgl settings
  ******************************************************************************/
@@ -47,7 +55,7 @@ lv_display_t *disp;
 lv_color_t *disp_draw_buf1;
 lv_color_t *disp_draw_buf2;
 #define BACKGROUND RGB565_BLUE
-#define VERSION    "0.0.32"
+#define VERSION    "0.0.40"
 /*******************************************************************************
  * End of sketch settings
  ******************************************************************************/
@@ -57,6 +65,10 @@ void setup(void)
 #ifdef DEV_DEVICE_INIT
   DEV_DEVICE_INIT();
 #endif
+
+// #if LV_FONT_MONTSERRAT_18
+//   #error "ENABLED!"
+// #endif
 
   init_serial();
 
@@ -86,7 +98,8 @@ void setup(void)
 
   init_touch();
 
-  disp_test();
+  //disp_test();
+  ui_init();
   
   Serial.println("Setup done");  
 }
@@ -94,7 +107,8 @@ void setup(void)
 void loop()
 {
   lv_task_handler(); /* let the GUI do its work */
-  delay(5); 
+  //delay(5);
+  ui_tick(); 
 }
 
 void init_serial()

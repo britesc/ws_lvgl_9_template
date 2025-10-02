@@ -2,6 +2,8 @@
 
 void display_pins() 
 {
+  	Serial.begin(115200);
+  	while(!Serial);
 	Serial.print("SDA:        ");
 	Serial.println(SDA);
 	Serial.print("MOSI:       ");
@@ -12,4 +14,5 @@ void display_pins()
 	Serial.println(SCL);
 	Serial.print("CS / SS:    ");
 	Serial.println(SS);
+	Serial.flush();
 }

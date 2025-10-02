@@ -7,6 +7,19 @@
 extern "C" {
 #endif
 
+extern const lv_img_dsc_t img_boot_01;
+extern const lv_img_dsc_t img_boot_02;
+extern const lv_img_dsc_t img_boot_03;
+extern const lv_img_dsc_t img_boot_04;
+extern const lv_img_dsc_t img_boot_05;
+extern const lv_img_dsc_t img_boot_06;
+extern const lv_img_dsc_t img_boot_07;
+extern const lv_img_dsc_t img_boot_08;
+extern const lv_img_dsc_t img_boot_09;
+extern const lv_img_dsc_t img_boot_10;
+extern const lv_img_dsc_t img_boot_11;
+extern const lv_img_dsc_t img_boot_12;
+extern const lv_img_dsc_t img_boot_13;
 
 #ifndef EXT_IMG_DESC_T
 #define EXT_IMG_DESC_T
@@ -16,7 +29,7 @@ typedef struct _ext_img_desc_t {
 } ext_img_desc_t;
 #endif
 
-extern const ext_img_desc_t images[1];
+extern const ext_img_desc_t images[13];
 
 
 #ifdef __cplusplus

@@ -54,8 +54,8 @@ uint32_t bufSize;
 lv_display_t *disp;
 lv_color_t *disp_draw_buf1;
 lv_color_t *disp_draw_buf2;
-#define BACKGROUND RGB565_YELLOW
-#define VERSION    "0.0.50"
+#define BACKGROUND RGB565_BLACK
+#define VERSION    "0.0.55"
 /*******************************************************************************
  * End of sketch settings
  ******************************************************************************/

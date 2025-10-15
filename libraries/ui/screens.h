@@ -9,23 +9,38 @@ extern "C" {
 
 typedef struct _objects_t {
     lv_obj_t *main;
-    lv_obj_t *screen_1;
+    lv_obj_t *containers_screen;
+    lv_obj_t *zap_screen;
     lv_obj_t *boot_logo;
+    lv_obj_t *button_zap;
+    lv_obj_t *button_exit;
+    lv_obj_t *keyboard_zap_number;
     lv_obj_t *label_main_screen;
+    lv_obj_t *container_main;
+    lv_obj_t *button_settings;
+    lv_obj_t *container_establish;
+    lv_obj_t *button_info;
+    lv_obj_t *label_zap_screen;
+    lv_obj_t *container_zap_number;
+    lv_obj_t *textarea_zap_number;
 } objects_t;
 
 extern objects_t objects;
 
 enum ScreensEnum {
     SCREEN_ID_MAIN = 1,
-    SCREEN_ID_SCREEN_1 = 2,
+    SCREEN_ID_CONTAINERS_SCREEN = 2,
+    SCREEN_ID_ZAP_SCREEN = 3,
 };
 
 void create_screen_main();
 void tick_screen_main();
 
-void create_screen_screen_1();
-void tick_screen_screen_1();
+void create_screen_containers_screen();
+void tick_screen_containers_screen();
+
+void create_screen_zap_screen();
+void tick_screen_zap_screen();
 
 void tick_screen_by_id(enum ScreensEnum screenId);
 void tick_screen(int screen_index);

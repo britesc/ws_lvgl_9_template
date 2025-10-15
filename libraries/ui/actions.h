@@ -7,6 +7,8 @@
 extern "C" {
 #endif
 
+extern void action_reboot(lv_event_t * e);
+extern void action_update_zap_eeprom(lv_event_t * e);
 
 
 #ifdef __cplusplus

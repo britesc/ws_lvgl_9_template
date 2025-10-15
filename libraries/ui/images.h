@@ -20,6 +20,10 @@ extern const lv_img_dsc_t img_boot_10;
 extern const lv_img_dsc_t img_boot_11;
 extern const lv_img_dsc_t img_boot_12;
 extern const lv_img_dsc_t img_boot_13;
+extern const lv_img_dsc_t img_image_col_settings;
+extern const lv_img_dsc_t img_image_col_zap;
+extern const lv_img_dsc_t img_image_col_info;
+extern const lv_img_dsc_t img_image_col_exit;
 
 #ifndef EXT_IMG_DESC_T
 #define EXT_IMG_DESC_T
@@ -29,7 +33,7 @@ typedef struct _ext_img_desc_t {
 } ext_img_desc_t;
 #endif
 
-extern const ext_img_desc_t images[13];
+extern const ext_img_desc_t images[17];
 
 
 #ifdef __cplusplus

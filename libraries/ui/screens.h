@@ -15,11 +15,16 @@ typedef struct _objects_t {
     lv_obj_t *button_zap;
     lv_obj_t *button_exit;
     lv_obj_t *keyboard_zap_number;
-    lv_obj_t *label_main_screen;
     lv_obj_t *container_main;
     lv_obj_t *button_settings;
     lv_obj_t *container_establish;
     lv_obj_t *button_info;
+    lv_obj_t *container_bottom;
+    lv_obj_t *label_text_bottom;
+    lv_obj_t *button_return_bottom;
+    lv_obj_t *container_top;
+    lv_obj_t *image_icon_ear;
+    lv_obj_t *label_top_container;
     lv_obj_t *label_zap_screen;
     lv_obj_t *container_zap_number;
     lv_obj_t *textarea_zap_number;

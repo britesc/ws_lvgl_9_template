@@ -45,6 +45,15 @@ Arduino_GFX *gfx = new Arduino_ST7789(
  ******************************************************************************/
 
 /*******************************************************************************
+ * Start of eeprom settings
+ ******************************************************************************/
+#include <PicoFlashEeprom.h>
+PicoFlashEeprom PFE((uint8_t)512);
+/*******************************************************************************
+ * End of eeprom settings
+ ******************************************************************************/
+
+/*******************************************************************************
  * Start of sketch settings
  ******************************************************************************/
 uint32_t screenRotation;
@@ -55,7 +64,7 @@ lv_display_t *disp;
 lv_color_t *disp_draw_buf1;
 lv_color_t *disp_draw_buf2;
 #define BACKGROUND RGB565_BLACK
-#define VERSION    "0.0.70"
+#define VERSION "0.0.95"
 /*******************************************************************************
  * End of sketch settings
  ******************************************************************************/
@@ -64,32 +73,31 @@ lv_color_t *disp_draw_buf2;
  * Start of Core 0
  ******************************************************************************/
 
-void setup(void)
-{
+void setup(void) {
 #ifdef DEV_DEVICE_INIT
   DEV_DEVICE_INIT();
 #endif
 
-// #if LV_FONT_MONTSERRAT_18
-//   #error "ENABLED!"
-// #endif
+  // #if LV_FONT_MONTSERRAT_18
+  //   #error "ENABLED!"
+  // #endif
 
-/* Initialise Serial Output*/
+  /* Initialise Serial Output*/
   init_serial();
-/* Initialise Display */
+  /* Initialise Display */
   init_display();
 
 #ifdef GFX_BL
   pinMode(GFX_BL, OUTPUT);
   digitalWrite(GFX_BL, HIGH);
 #endif
-  Serial.flush();  
+  Serial.flush();
 
-/* Initialise Wire Library */
+  /* Initialise Wire Library */
   init_wire();
-/* Initialise the System */
+  /* Initialise the System */
   init_system();
-/* Initialise LVGL */
+  /* Initialise LVGL */
   lv_init();
 
   /*Set a tick source so that LVGL will know how much time elapsed. */
@@ -98,22 +106,21 @@ void setup(void)
   /* register print function for debugging */
 #if LV_USE_LOG != 0
   lv_log_register_print_cb(my_print);
-#endif  
-/* Initialise DIsplay BUffer */
+#endif
+  /* Initialise DIsplay BUffer */
   init_buffer();
-/* Initialise Touch Input*/
+  /* Initialise Touch Input*/
   init_touch();
-/* Initialise UI */
+  /* Initialise UI */
   ui_init();
-  
-  Serial.println("Setup done");  
+
+  Serial.println("Setup done");
 }
 
-void loop()
-{
+void loop() {
   lv_task_handler(); /* let the GUI do its work */
   //delay(5);
-  ui_tick(); 
+  ui_tick();
 }
 
 /*******************************************************************************
@@ -124,14 +131,30 @@ void loop()
  * Start of Core 1
  ******************************************************************************/
 
-void setup1()
-{
-  // TODO 
+void setup1() {
+  // TODO
+  init_serial();
+  
+  PFE.begin();
+  if(!PFE.isEepromValid()) 
+  {
+    PFE.initializeEeprom();
+  }
+  if(PFE.isZapNumberValid(PFE.getZapNumber()))
+  {
+    Serial.print("Zap NOT Valid");
+  }      
+  Serial.println(PFE.getZapNumber());
 }
 
-void loop1()
-{
-  // TODO 
+void loop1() {
+  // TODO
+  if(PFE.isZapNumberValid(PFE.getZapNumber()))
+  {
+    Serial.print("Zap NOT Valid");
+  }      
+  Serial.println(PFE.getZapNumber());  
+  delay(2000);
 }
 
 
@@ -143,59 +166,51 @@ void loop1()
  * Start of Core Functions
  ******************************************************************************/
 
-void init_serial()
-{
+void init_serial() {
   int x = 0;
   Serial.begin(115200);
   // Serial.setDebugOutput(true);
-  while(x < 500 )
-  {
+  while (x < 500) {
     x++;
-    if(Serial.available())
-    {
+    if (Serial.available()) {
       x = 501;
     }
-  }    
+  }
   output_info();
 }
 
-void output_info()
-{
+void output_info() {
   Serial.println("WS Pico 2350 Touchscreen Template");
   String String_Out = String("  Version ") + VERSION;
-  Serial.println(String_Out); 
+  Serial.println(String_Out);
   String_Out = String("  GNU C++ Version ") + __cplusplus;
   Serial.println(String_Out);
-  String_Out = String("  Compiled ") + __DATE__ + " " + __TIME__;  
+  String_Out = String("  Compiled ") + __DATE__ + " " + __TIME__;
   Serial.println(String_Out);
   String_Out = String("  LVGL Version ") + lv_version_major() + "." + lv_version_minor() + "." + lv_version_patch();
-  Serial.println(String_Out); 
+  Serial.println(String_Out);
 }
 
-void init_display()
-{
-  if (!gfx->begin())
-  {
+void init_display() {
+  if (!gfx->begin()) {
     Serial.println("gfx->begin() failed!");
   }
-  gfx->fillScreen(BACKGROUND); 
+  gfx->fillScreen(BACKGROUND);
 
 #ifdef GFX_BL
   pinMode(GFX_BL, OUTPUT);
   digitalWrite(GFX_BL, HIGH);
-#endif  
+#endif
 }
 
-void init_wire()
-{
+void init_wire() {
   Wire1.setSDA(I2C_SDA_PIN);
   Wire1.setSCL(I2C_SCL_PIN);
   Wire1.begin();
   Wire1.setClock(I2C_SPEED);
-}  
+}
 
-void init_system()
-{
+void init_system() {
   screenWidth = gfx->width();
   screenHeight = gfx->height();
   screenRotation = gfx->getRotation();
@@ -206,11 +221,10 @@ void init_system()
   cst328_info.Wire = &Wire1;
   cst328_info.rst_pin = TP_RST_PIN;
   cst328_info.int_pin = TP_INT_PIN;
-  bsp_cst328_init(&cst328_info); 
+  bsp_cst328_init(&cst328_info);
 }
 
-void init_buffer()
-{
+void init_buffer() {
 #ifdef DIRECT_RENDER_MODE
   bufSize = screenWidth * screenHeight;
 #else
@@ -221,12 +235,9 @@ void init_buffer()
   disp_draw_buf1 = (lv_color_t *)malloc(bufSize * 2);
   disp_draw_buf2 = (lv_color_t *)malloc(bufSize * 2);
 
-  if (!disp_draw_buf1 && !disp_draw_buf2)
-  {
+  if (!disp_draw_buf1 && !disp_draw_buf2) {
     Serial.println("LVGL disp_draw_buf allocate failed!");
-  }
-  else
-  {
+  } else {
     disp = lv_display_create(screenWidth, screenHeight);
     lv_display_set_flush_cb(disp, my_disp_flush);
 #ifdef DIRECT_RENDER_MODE
@@ -237,31 +248,27 @@ void init_buffer()
   }
 }
 
-void init_touch()
-{
-    /*Initialize the (dummy) input device driver*/
-    lv_indev_t *indev = lv_indev_create();
-    lv_indev_set_type(indev, LV_INDEV_TYPE_POINTER); /*Touchpad should have POINTER type*/
-    lv_indev_set_read_cb(indev, my_touchpad_read);
+void init_touch() {
+  /*Initialize the (dummy) input device driver*/
+  lv_indev_t *indev = lv_indev_create();
+  lv_indev_set_type(indev, LV_INDEV_TYPE_POINTER); /*Touchpad should have POINTER type*/
+  lv_indev_set_read_cb(indev, my_touchpad_read);
 }
 
 #if LV_USE_LOG != 0
-void my_print(lv_log_level_t level, const char *buf)
-{
+void my_print(lv_log_level_t level, const char *buf) {
   LV_UNUSED(level);
   Serial.println(buf);
   Serial.flush();
 }
 #endif
 
-uint32_t millis_cb(void)
-{
+uint32_t millis_cb(void) {
   return millis();
 }
 
 /* LVGL calls it when a rendered image needs to copied to the display*/
-void my_disp_flush(lv_display_t *disp, const lv_area_t *area, uint8_t *px_map)
-{
+void my_disp_flush(lv_display_t *disp, const lv_area_t *area, uint8_t *px_map) {
   uint32_t w = lv_area_get_width(area);
   uint32_t h = lv_area_get_height(area);
 
@@ -271,20 +278,16 @@ void my_disp_flush(lv_display_t *disp, const lv_area_t *area, uint8_t *px_map)
 }
 
 /*Read the touchpad*/
-void my_touchpad_read(lv_indev_t *indev, lv_indev_data_t *data)
-{
+void my_touchpad_read(lv_indev_t *indev, lv_indev_data_t *data) {
   bsp_cst328_data_t cst328_data;
   bsp_cst328_read();
-  if (bsp_cst328_get_touch_data(&cst328_data))
-  {
+  if (bsp_cst328_get_touch_data(&cst328_data)) {
     data->state = LV_INDEV_STATE_PR;
 
     /*Set the coordinates*/
     data->point.x = cst328_data.coords[0].x;
     data->point.y = cst328_data.coords[0].y;
-  }
-  else
-  {
+  } else {
     data->state = LV_INDEV_STATE_REL;
   }
 }
@@ -293,7 +296,18 @@ void my_touchpad_read(lv_indev_t *indev, lv_indev_data_t *data)
  * End of Core Functions
  ******************************************************************************/
 
+/*******************************************************************************
+ * Start of Zap Number Functions
+ ******************************************************************************/
+
+
+
+
+/*******************************************************************************
+ * End of Zap Number Functions
+ ******************************************************************************/
+
+
 /* ------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------ */
- 

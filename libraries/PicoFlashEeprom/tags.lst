@@ -1,0 +1,65 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	D:/Users/julia/OneDrive/Projects/IDEs/IDM/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+LENGTH_ZAP_NUMBER	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    const uint8_t LENGTH_ZAP_NUMBER = 6;$/;"	m	line:21	class:PicoFlashEeprom	typeref:typename:const uint8_t
+LOG_DEBUG	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^        LOG_DEBUG = 4$/;"	e	line:17	enum:PicoFlashEeprom::LogLevel
+LOG_ERROR	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^        LOG_ERROR = 1,$/;"	e	line:14	enum:PicoFlashEeprom::LogLevel
+LOG_INFO	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^        LOG_INFO  = 3,$/;"	e	line:16	enum:PicoFlashEeprom::LogLevel
+LOG_NONE	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^        LOG_NONE  = 0,$/;"	e	line:13	enum:PicoFlashEeprom::LogLevel
+LOG_WARN	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^        LOG_WARN  = 2,$/;"	e	line:15	enum:PicoFlashEeprom::LogLevel
+LogLevel	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    enum LogLevel {$/;"	g	line:12	class:PicoFlashEeprom
+PICO_FLASH_EEPROM_ENABLE_LOGGING	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^#define PICO_FLASH_EEPROM_ENABLE_LOGGING$/;"	d	line:8
+PICO_FLASH_EEPROM_H	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^#define PICO_FLASH_EEPROM_H$/;"	d	line:2
+PicoFlashEeprom	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^PicoFlashEeprom::PicoFlashEeprom(uint8_t size) : _size(size) {}$/;"	f	line:14	class:PicoFlashEeprom
+PicoFlashEeprom	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    PicoFlashEeprom(uint8_t size);$/;"	p	line:25	class:PicoFlashEeprom
+PicoFlashEeprom	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^class PicoFlashEeprom {$/;"	c	line:10
+START_ZAP_NUMBER	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    const uint8_t START_ZAP_NUMBER = 2;$/;"	m	line:22	class:PicoFlashEeprom	typeref:typename:const uint8_t
+_eeprom_address	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    uint8_t _eeprom_address = 0;$/;"	m	line:41	class:PicoFlashEeprom	typeref:typename:uint8_t
+_logLevel	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^PicoFlashEeprom::LogLevel PicoFlashEeprom::_logLevel = LOG_DEBUG;$/;"	m	line:11	class:PicoFlashEeprom	typeref:typename:PicoFlashEeprom::LogLevel
+_logLevel	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    static LogLevel _logLevel;$/;"	m	line:46	class:PicoFlashEeprom	typeref:typename:LogLevel
+_logStream	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^Stream* PicoFlashEeprom::_logStream = &Serial;$/;"	m	line:4	class:PicoFlashEeprom	typeref:typename:Stream *
+_logStream	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    static Stream* _logStream;$/;"	m	line:44	class:PicoFlashEeprom	typeref:typename:Stream *
+_loggingEnabled	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^bool PicoFlashEeprom::_loggingEnabled =$/;"	m	line:5	class:PicoFlashEeprom	typeref:typename:bool
+_loggingEnabled	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    static bool _loggingEnabled;$/;"	m	line:45	class:PicoFlashEeprom	typeref:typename:bool
+_size	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    uint8_t _size;$/;"	m	line:40	class:PicoFlashEeprom	typeref:typename:uint8_t
+architectures	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/library.properties	/^architectures=2040, 2350/;"	k	line:9
+author	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/library.properties	/^author=Julian$/;"	k	line:3
+begin	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^void PicoFlashEeprom::begin() {$/;"	f	line:17	class:PicoFlashEeprom	typeref:typename:void
+begin	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    void begin();$/;"	p	line:28	class:PicoFlashEeprom	typeref:typename:void
+category	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/library.properties	/^category=Flash Eeprom$/;"	k	line:7
+eeprom_value	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^    byte eeprom_value;$/;"	l	line:42	function:PicoFlashEeprom::getZapNumber	typeref:typename:byte	file:
+enableLogging	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    static void enableLogging(bool enable);$/;"	p	line:37	class:PicoFlashEeprom	typeref:typename:void
+getZapNumber	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^String PicoFlashEeprom::getZapNumber() {$/;"	f	line:40	class:PicoFlashEeprom	typeref:typename:String
+getZapNumber	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    String getZapNumber();$/;"	p	line:31	class:PicoFlashEeprom	typeref:typename:String
+i	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^    for (int i = 0; i < LENGTH_ZAP_NUMBER - 1; i++) {$/;"	l	line:43	function:PicoFlashEeprom::getZapNumber	typeref:typename:int	file:
+i	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^    for (int i = 0; i < _size; i++) {$/;"	l	line:32	function:PicoFlashEeprom::initializeEeprom	typeref:typename:int	file:
+i	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^    for (int i = 0; i < strlen(str); i++) {$/;"	l	line:75	function:PicoFlashEeprom::writeZapNumber	typeref:typename:int	file:
+i	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^  for (int i = 2; i < 6; i++) {$/;"	l	line:64	function:PicoFlashEeprom::isZapNumberValid	typeref:typename:int	file:
+initializeEeprom	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^void PicoFlashEeprom::initializeEeprom() {$/;"	f	line:31	class:PicoFlashEeprom	typeref:typename:void
+initializeEeprom	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    void initializeEeprom();$/;"	p	line:30	class:PicoFlashEeprom	typeref:typename:void
+isEepromValid	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^bool PicoFlashEeprom::isEepromValid() {$/;"	f	line:22	class:PicoFlashEeprom	typeref:typename:bool
+isEepromValid	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    bool isEepromValid();$/;"	p	line:29	class:PicoFlashEeprom	typeref:typename:bool
+isZapNumberValid	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^bool PicoFlashEeprom::isZapNumberValid(const char *str) {$/;"	f	line:52	class:PicoFlashEeprom	typeref:typename:bool
+isZapNumberValid	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    bool isZapNumberValid(const char *str);$/;"	p	line:32	class:PicoFlashEeprom	typeref:typename:bool
+log	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    static void log(LogLevel level, const __FlashStringHelper* msg);$/;"	p	line:49	class:PicoFlashEeprom	typeref:typename:void
+maintainer	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/library.properties	/^maintainer=Julian$/;"	k	line:4
+name	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/library.properties	/^name=PicoFlashEeprom$/;"	k	line:1
+paragraph	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/library.properties	/^paragraph=An Arduino C++ library for Pico Flash Eeprom featuring selectable log levels, timestam/;"	k	line:6
+sentence	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/library.properties	/^sentence=Arduino library with advanced configurable logging.$/;"	k	line:5
+setLogLevel	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    static void setLogLevel(LogLevel level);$/;"	p	line:36	class:PicoFlashEeprom	typeref:typename:void
+setLogger	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.h	/^    static void setLogger(Stream* stream);$/;"	p	line:35	class:PicoFlashEeprom	typeref:typename:void
+size	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^PicoFlashEeprom::PicoFlashEeprom(uint8_t size) : _size(size) {}$/;"	z	line:14	function:PicoFlashEeprom::PicoFlashEeprom	typeref:typename:uint8_t	file:
+str	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^bool PicoFlashEeprom::isZapNumberValid(const char *str) {$/;"	z	line:52	function:PicoFlashEeprom::isZapNumberValid	typeref:typename:const char *	file:
+str	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^void PicoFlashEeprom::writeZapNumber(const char *str) {$/;"	z	line:74	function:PicoFlashEeprom::writeZapNumber	typeref:typename:const char *	file:
+url	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/library.properties	/^url=https:\/\/github.com\/britesc\/PicoFlashEeprom$/;"	k	line:8
+version	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/library.properties	/^version=1.1.0$/;"	k	line:2
+writeZapNumber	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^void PicoFlashEeprom::writeZapNumber(const char *str) {$/;"	f	line:74	class:PicoFlashEeprom	typeref:typename:void
+zap_number_string	D:/Users/julia/OneDrive/Documents/Arduino/projects/ws_lvgl_9_template/libraries/PicoFlashEeprom/PicoFlashEeprom.cpp	/^    String zap_number_string[LENGTH_ZAP_NUMBER + 1];$/;"	l	line:41	function:PicoFlashEeprom::getZapNumber	typeref:typename:String[]	file:

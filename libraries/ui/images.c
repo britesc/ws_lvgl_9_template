@@ -1,6 +1,6 @@
 #include "images.h"
 
-const ext_img_desc_t images[17] = {
+const ext_img_desc_t images[19] = {
     { "Boot_01", &img_boot_01 },
     { "Boot_02", &img_boot_02 },
     { "Boot_03", &img_boot_03 },
@@ -18,4 +18,6 @@ const ext_img_desc_t images[17] = {
     { "Image_Col_Zap", &img_image_col_zap },
     { "Image_Col_Info", &img_image_col_info },
     { "Image_Col_Exit", &img_image_col_exit },
+    { "Image_Col_Return", &img_image_col_return },
+    { "Image_Col_Ear", &img_image_col_ear },
 };

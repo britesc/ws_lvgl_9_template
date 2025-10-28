@@ -1,7 +1,7 @@
 /*
    Arduino lvgl Template
 */
-
+#define VERSION "0.0.100"
 /*******************************************************************************
  * Start of Arduino_GFX settings
  ******************************************************************************/
@@ -40,6 +40,7 @@ Arduino_GFX *gfx = new Arduino_ST7789(
  * Start of ui settings
  ******************************************************************************/
 #include <ui.h>
+#include <vars.h>
 /*******************************************************************************
  * End of lvgl settings
  ******************************************************************************/
@@ -64,7 +65,7 @@ lv_display_t *disp;
 lv_color_t *disp_draw_buf1;
 lv_color_t *disp_draw_buf2;
 #define BACKGROUND RGB565_BLACK
-#define VERSION "0.0.95"
+
 /*******************************************************************************
  * End of sketch settings
  ******************************************************************************/
@@ -142,7 +143,13 @@ void setup1() {
   }
   if(PFE.isZapNumberValid(PFE.getZapNumber()))
   {
+    // set to true for testing
+    set_var_has_valid_zap_number(true);
     Serial.print("Zap NOT Valid");
+  }
+  else {
+     
+    set_var_has_valid_zap_number(true);
   }      
   Serial.println(PFE.getZapNumber());
 }
@@ -154,7 +161,7 @@ void loop1() {
     Serial.print("Zap NOT Valid");
   }      
   Serial.println(PFE.getZapNumber());  
-  delay(2000);
+  delay(5000);
 }
 
 

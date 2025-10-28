@@ -40,7 +40,7 @@ void PicoFlashEeprom::initializeEeprom() {
 char*  PicoFlashEeprom::getZapNumber() {
     static char buffer[7];  // 6 bytes + null terminator
 
-    for (int i = 0; i < LENGTH_ZAP_NUMBER - 1; i++) {
+    for (int i = 0; i < LENGTH_ZAP_NUMBER; i++) {
         buffer[i] = (char)EEPROM.read(_eeprom_address + START_ZAP_NUMBER + i);
     }
     buffer[LENGTH_ZAP_NUMBER] = '\0';   // ensure string is null-terminated

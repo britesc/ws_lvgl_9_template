@@ -66,9 +66,11 @@ bool PicoFlashEeprom::isZapNumberValid(const char *str) {
       log(LOG_INFO, F("Zap Number NOT 4 Numeric Characters"));
       return false;
     }
+
+  }
     log(LOG_INFO, F("Zap Number IS Valid"));
     return true;
-  }
+
 }
 
 void PicoFlashEeprom::writeZapNumber(const char *str) {

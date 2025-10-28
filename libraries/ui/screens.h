@@ -8,9 +8,11 @@ extern "C" {
 #endif
 
 typedef struct _objects_t {
-    lv_obj_t *main;
-    lv_obj_t *containers_screen;
-    lv_obj_t *zap_screen;
+    lv_obj_t *screen_boot;
+    lv_obj_t *screen_no_zap;
+    lv_obj_t *screen_zap_entry;
+    lv_obj_t *screen_info;
+    lv_obj_t *screen_main;
     lv_obj_t *boot_logo;
     lv_obj_t *button_zap;
     lv_obj_t *button_exit;
@@ -28,24 +30,41 @@ typedef struct _objects_t {
     lv_obj_t *label_zap_screen;
     lv_obj_t *container_zap_number;
     lv_obj_t *textarea_zap_number;
+    lv_obj_t *container_main_1;
+    lv_obj_t *button_settings_1;
+    lv_obj_t *container_establish_1;
+    lv_obj_t *container_bottom_1;
+    lv_obj_t *label_text_bottom_1;
+    lv_obj_t *button_return_bottom_1;
+    lv_obj_t *container_top_1;
+    lv_obj_t *image_icon_ear_1;
+    lv_obj_t *label_top_container_1;
 } objects_t;
 
 extern objects_t objects;
 
 enum ScreensEnum {
-    SCREEN_ID_MAIN = 1,
-    SCREEN_ID_CONTAINERS_SCREEN = 2,
-    SCREEN_ID_ZAP_SCREEN = 3,
+    SCREEN_ID_SCREEN_BOOT = 1,
+    SCREEN_ID_SCREEN_NO_ZAP = 2,
+    SCREEN_ID_SCREEN_ZAP_ENTRY = 3,
+    SCREEN_ID_SCREEN_INFO = 4,
+    SCREEN_ID_SCREEN_MAIN = 5,
 };
 
-void create_screen_main();
-void tick_screen_main();
+void create_screen_screen_boot();
+void tick_screen_screen_boot();
 
-void create_screen_containers_screen();
-void tick_screen_containers_screen();
+void create_screen_screen_no_zap();
+void tick_screen_screen_no_zap();
 
-void create_screen_zap_screen();
-void tick_screen_zap_screen();
+void create_screen_screen_zap_entry();
+void tick_screen_screen_zap_entry();
+
+void create_screen_screen_info();
+void tick_screen_screen_info();
+
+void create_screen_screen_main();
+void tick_screen_screen_main();
 
 void tick_screen_by_id(enum ScreensEnum screenId);
 void tick_screen(int screen_index);

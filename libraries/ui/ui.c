@@ -222,6 +222,7 @@ const uint8_t assets[3308] = {
 native_var_t native_vars[] = {
     { NATIVE_VAR_TYPE_NONE, 0, 0 },
     { NATIVE_VAR_TYPE_BOOLEAN, get_var_has_valid_zap_number, set_var_has_valid_zap_number }, 
+    { NATIVE_VAR_TYPE_STRING, get_var_textarea_zap_number, set_var_textarea_zap_number }, 
 };
 
 

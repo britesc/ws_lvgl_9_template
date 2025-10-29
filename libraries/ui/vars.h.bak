@@ -22,8 +22,6 @@ enum FlowGlobalVariables {
 
 extern bool get_var_has_valid_zap_number();
 extern void set_var_has_valid_zap_number(bool value);
-extern const char *get_var_textarea_zap_number();
-extern void set_var_textarea_zap_number(const char *value);
 
 
 #ifdef __cplusplus

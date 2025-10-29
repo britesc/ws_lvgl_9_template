@@ -5,6 +5,7 @@
 #include <EEPROM.h>
 
 // Uncomment or define in your sketch to enable logging globally
+#define PICO_FLASH_EEPROM_SIZE 512
 #define PICO_FLASH_EEPROM_ENABLE_LOGGING
 
 class PicoFlashEeprom {
@@ -31,7 +32,8 @@ public:
     void initializeEeprom();
     char* getZapNumber();
     bool isZapNumberValid(const char *str);
-
+		void writeZapNumber(const char *str);
+		
     // Logging configuration
     static void setLogger(Stream* stream);
     static void setLogLevel(LogLevel level);
@@ -49,5 +51,7 @@ private:
     // Internal logging function
     static void log(LogLevel level, const __FlashStringHelper* msg);
 };
+
+PicoFlashEeprom PFE((uint8_t)PICO_FLASH_EEPROM_SIZE);
 
 #endif // PICO_FLASH_EEPROM_H

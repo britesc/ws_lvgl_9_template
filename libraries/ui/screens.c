@@ -372,7 +372,9 @@ void create_screen_screen_zap_entry() {
             objects.textarea_zap_number = obj;
             lv_obj_set_pos(obj, 85, 46);
             lv_obj_set_size(obj, 150, 36);
+            lv_textarea_set_accepted_chars(obj, "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
             lv_textarea_set_max_length(obj, 6);
+            lv_textarea_set_text(obj, "=Textarea_Zap_String");
             lv_textarea_set_placeholder_text(obj, "Zap Number (6)");
             lv_textarea_set_one_line(obj, true);
             lv_textarea_set_password_mode(obj, false);

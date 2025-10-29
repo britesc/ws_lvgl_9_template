@@ -1,7 +1,13 @@
 /*
    Arduino lvgl Template
 */
-#define VERSION "0.0.100"
+/*******************************************************************************
+ * App Version Information
+ ******************************************************************************/
+#define APP_VERSION_MAJOR "0"
+#define APP_VERSION_MINOR "0"
+#define APP_VERSION_BUILD "103"
+#define APP_VERSION       APP_VERSION_MAJOR + "." + APP_VERSION_MINOR + "." + APP_VERSION_BUILD 
 /*******************************************************************************
  * Start of Arduino_GFX settings
  ******************************************************************************/
@@ -31,7 +37,6 @@ Arduino_GFX *gfx = new Arduino_ST7789(
  ******************************************************************************/
 #include <lvgl.h>
 #include <bsp_cst328.h>
-
 /*******************************************************************************
  * End of lvgl settings
  ******************************************************************************/
@@ -49,7 +54,7 @@ Arduino_GFX *gfx = new Arduino_ST7789(
  * Start of eeprom settings
  ******************************************************************************/
 #include <PicoFlashEeprom.h>
-PicoFlashEeprom PFE((uint8_t)512);
+PicoFlashEeprom PFE((uint8_t)PICO_FLASH_EEPROM_SIZE);
 /*******************************************************************************
  * End of eeprom settings
  ******************************************************************************/
@@ -188,7 +193,7 @@ void init_serial() {
 
 void output_info() {
   Serial.println("WS Pico 2350 Touchscreen Template");
-  String String_Out = String("  Version ") + VERSION;
+  String String_Out = String("  Version ") + APP_VERSION;
   Serial.println(String_Out);
   String_Out = String("  GNU C++ Version ") + __cplusplus;
   Serial.println(String_Out);

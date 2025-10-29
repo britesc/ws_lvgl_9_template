@@ -1,5 +1,6 @@
 #include "PicoFlashEeprom.h"
 
+
 // Static member initialisation
 Stream* PicoFlashEeprom::_logStream = &Serial;
 bool PicoFlashEeprom::_loggingEnabled =

@@ -6,8 +6,16 @@
  ******************************************************************************/
 #define APP_VERSION_MAJOR "0"
 #define APP_VERSION_MINOR "0"
-#define APP_VERSION_BUILD "103"
-#define APP_VERSION       APP_VERSION_MAJOR + "." + APP_VERSION_MINOR + "." + APP_VERSION_BUILD 
+#define APP_VERSION_PATCH "110"
+#define APP_VERSION       APP_VERSION_MAJOR + "." + APP_VERSION_MINOR + "." + APP_VERSION_PATCH 
+
+/*******************************************************************************
+ * Start of Logging settings
+ ******************************************************************************/
+
+/*******************************************************************************
+ * End of of Logging settings
+ ******************************************************************************/
 /*******************************************************************************
  * Start of Arduino_GFX settings
  ******************************************************************************/
@@ -149,7 +157,7 @@ void setup1() {
   if(PFE.isZapNumberValid(PFE.getZapNumber()))
   {
     // set to true for testing
-    set_var_has_valid_zap_number(true);
+    set_var_has_valid_zap_number(false);
     Serial.print("Zap NOT Valid");
   }
   else {

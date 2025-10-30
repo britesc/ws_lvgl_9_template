@@ -1,0 +1,49 @@
+#############################################
+# Syntax Colouring Map
+#############################################
+
+#############################################
+# Datatypes (KEYWORD1)
+#############################################
+
+PicoFlashEeprom	KEYWORD1
+
+#############################################
+# Methods and Functions (KEYWORD2)
+#############################################
+
+begin	KEYWORD2
+isEepromValid	KEYWORD2
+initializeEeprom	KEYWORD2
+getZapNumber	KEYWORD2
+isZapNumberValid	KEYWORD2
+writeZapNumber	KEYWORD2
+		
+setLogger	KEYWORD2
+setLogLevel	KEYWORD2
+enableLogging	KEYWORD2
+
+#############################################
+# Constants (LITERAL1)
+#############################################
+
+PICO_FLASH_EEPROM_SIZE	LITERAL1
+PICO_FLASH_EEPROM_ENABLE_LOGGING	LITERAL1
+
+LogLevel	LITERAL1
+LOG_NONE	LITERAL1
+LOG_ERROR	LITERAL1
+LOG_WARN	LITERAL1
+LOG_INFO	LITERAL1
+LOG_DEBUG	LITERAL1
+
+LENGTH_ZAP_NUMBER	LITERAL1
+LENGTH_ZAP_NUMBER_BUFFER	LITERAL1
+START_ZAP_NUMBER	LITERAL1
+
+_size	LITERAL1
+_eeprom_address	LITERAL1
+
+_logStream	LITERAL1
+_loggingEnabled	LITERAL1
+_logLevel	LITERAL1

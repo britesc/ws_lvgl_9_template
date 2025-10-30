@@ -4,9 +4,10 @@
 #include <Arduino.h>
 #include <EEPROM.h>
 
-// Uncomment or define in your sketch to enable logging globally
+
 #define PICO_FLASH_EEPROM_SIZE 512
-#define PICO_FLASH_EEPROM_ENABLE_LOGGING
+// Uncomment or define in your sketch to enable logging globally
+//#define PICO_FLASH_EEPROM_ENABLE_LOGGING
 
 class PicoFlashEeprom {
 public:
@@ -32,7 +33,7 @@ public:
     void initializeEeprom();
     char* getZapNumber();
     bool isZapNumberValid(const char *str);
-		void writeZapNumber(const char *str);
+    void writeZapNumber(const char *str);
 		
     // Logging configuration
     static void setLogger(Stream* stream);

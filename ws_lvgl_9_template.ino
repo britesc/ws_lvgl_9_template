@@ -1,3 +1,33 @@
+/**
+ * @file ws_lvgl_9_template.ino
+ *
+ * @mainpage EARS Project
+ *
+ * @section description Description
+ * An example sketch demonstrating how to use Doxygen style comments for
+ * generating source code documentation with Doxygen.
+ *
+ * @section circuit Circuit
+ * - Red LED connected to pin D2.
+ * - Momentary push button connected to pin D3.
+ *
+ * @section libraries Libraries
+ * - Arduino_LSM6DS3 (https://github.com/arduino-libraries/Arduino_LSM6DS3)
+ *   - Interacts with on-board IMU.
+ *
+ * @section notes Notes
+ * - Comments are Doxygen compatible.
+ *
+ * @section todo TODO
+ * - Don't use Doxygen style formatting inside the body of a function.
+ *
+ * @section author Author
+ * - Created by JTB on 20251103.
+ * - Modified by by JTB on 20251103.
+ *
+ * Copyright (c) 2025 JTB.  All rights reserved.
+ */
+ 
 /*
    Arduino lvgl Template
 */
@@ -6,16 +36,47 @@
  ******************************************************************************/
 #define APP_VERSION_MAJOR "0"
 #define APP_VERSION_MINOR "0"
-#define APP_VERSION_PATCH "110"
-#define APP_VERSION       APP_VERSION_MAJOR + "." + APP_VERSION_MINOR + "." + APP_VERSION_PATCH 
+#define APP_VERSION_PATCH "120"
+#define APP_VERSION_BUILD "(Dev)"
+#define APP_VERSION       APP_VERSION_MAJOR + "." + APP_VERSION_MINOR + "." + APP_VERSION_PATCH + " " + APP_VERSION_BUILD 
 
 /*******************************************************************************
  * Start of Logging settings
  ******************************************************************************/
+#define DEBUG 0    // SET TO 0 OUT TO REMOVE TRACES
 
+#if DEBUG
+  #define D_SerialBegin(...)       Serial.begin(__VA_ARGS__);
+  #define D_SerialPrint(...)       Serial.print(__VA_ARGS__)
+  #define D_SerialWrite(...)       Serial.write(__VA_ARGS__)
+  #define D_SerialPrintln(...)     Serial.println(__VA_ARGS__)
+  #define D_SerialAvailable()      Serial.available()
+  #define D_SerialFlush()          Serial.flush()
+  #define D_SERIAL_DELAY           1500
+  #define D_SERIAL_BAUD_RATE       115200
+#else
+  #define D_SerialBegin(bauds)
+  #define D_SerialPrint(...)
+  #define D_SerialWrite(...)
+  #define D_SerialPrintln(...)
+  #define D_SerialAvailable()
+  #define D_SerialFlush()
+  #define D_SERIAL_DELAY
+  #define D_SERIAL_BAUD_RATE
+#endif
 /*******************************************************************************
  * End of of Logging settings
  ******************************************************************************/
+/*******************************************************************************
+ * Start of Miscellaneous Defines
+ ******************************************************************************/
+
+/*******************************************************************************
+ * End of Miscellaneous Defines
+ ******************************************************************************/
+
+
+
 /*******************************************************************************
  * Start of Arduino_GFX settings
  ******************************************************************************/
@@ -105,7 +166,7 @@ void setup(void) {
   pinMode(GFX_BL, OUTPUT);
   digitalWrite(GFX_BL, HIGH);
 #endif
-  Serial.flush();
+  D_SerialFlush();
 
   /* Initialise Wire Library */
   init_wire();
@@ -128,7 +189,7 @@ void setup(void) {
   /* Initialise UI */
   ui_init();
 
-  Serial.println("Setup done");
+  D_SerialPrintln("Setup done");
 }
 
 void loop() {
@@ -147,8 +208,7 @@ void loop() {
 
 void setup1() {
   // TODO
-  init_serial();
-  
+  set_var_has_valid_zap_number(false);  
   PFE.begin();
   if(!PFE.isEepromValid()) 
   {
@@ -158,23 +218,17 @@ void setup1() {
   {
     // set to true for testing
     set_var_has_valid_zap_number(false);
-    Serial.print("Zap NOT Valid");
+    D_SerialPrint("Zap NOT Valid");
   }
-  else {
-     
-    set_var_has_valid_zap_number(true);
+  else
+  {   
+    set_var_has_valid_zap_number(false);
   }      
-  Serial.println(PFE.getZapNumber());
+  D_SerialPrintln(PFE.getZapNumber());
 }
 
 void loop1() {
   // TODO
-  if(PFE.isZapNumberValid(PFE.getZapNumber()))
-  {
-    Serial.print("Zap NOT Valid");
-  }      
-  Serial.println(PFE.getZapNumber());  
-  delay(5000);
 }
 
 
@@ -187,33 +241,34 @@ void loop1() {
  ******************************************************************************/
 
 void init_serial() {
+#if DEBUG
+  D_SerialBegin(D_SERIAL_BAUD_RATE);
   int x = 0;
-  Serial.begin(115200);
-  // Serial.setDebugOutput(true);
-  while (x < 500) {
+  while (x < D_SERIAL_DELAY) {
     x++;
-    if (Serial.available()) {
-      x = 501;
+    if (D_SerialAvailable()) {
+      x = D_SERIAL_DELAY + 1;
     }
   }
   output_info();
+#endif  
 }
 
 void output_info() {
-  Serial.println("WS Pico 2350 Touchscreen Template");
+  D_SerialPrintln("WS Pico 2350 Touchscreen Template");
   String String_Out = String("  Version ") + APP_VERSION;
-  Serial.println(String_Out);
+  D_SerialPrintln(String_Out);
   String_Out = String("  GNU C++ Version ") + __cplusplus;
-  Serial.println(String_Out);
+  D_SerialPrintln(String_Out);
   String_Out = String("  Compiled ") + __DATE__ + " " + __TIME__;
-  Serial.println(String_Out);
+  D_SerialPrintln(String_Out);
   String_Out = String("  LVGL Version ") + lv_version_major() + "." + lv_version_minor() + "." + lv_version_patch();
-  Serial.println(String_Out);
+  D_SerialPrintln(String_Out);
 }
 
 void init_display() {
   if (!gfx->begin()) {
-    Serial.println("gfx->begin() failed!");
+    D_SerialPrintln("gfx->begin() failed!");
   }
   gfx->fillScreen(BACKGROUND);
 
@@ -251,12 +306,12 @@ void init_buffer() {
   bufSize = screenWidth * 120;
 #endif
 
-  Serial.println("LVGL disp_draw_buf heap_caps_malloc failed! malloc again...");
+  D_SerialPrintln("LVGL disp_draw_buf heap_caps_malloc failed! malloc again...");
   disp_draw_buf1 = (lv_color_t *)malloc(bufSize * 2);
   disp_draw_buf2 = (lv_color_t *)malloc(bufSize * 2);
 
   if (!disp_draw_buf1 && !disp_draw_buf2) {
-    Serial.println("LVGL disp_draw_buf allocate failed!");
+    D_SerialPrintln("LVGL disp_draw_buf allocate failed!");
   } else {
     disp = lv_display_create(screenWidth, screenHeight);
     lv_display_set_flush_cb(disp, my_disp_flush);
@@ -278,8 +333,8 @@ void init_touch() {
 #if LV_USE_LOG != 0
 void my_print(lv_log_level_t level, const char *buf) {
   LV_UNUSED(level);
-  Serial.println(buf);
-  Serial.flush();
+  D_SerialPrintln(buf);
+  D_SerialFlush();
 }
 #endif
 
